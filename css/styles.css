@@ -1,0 +1,837 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+:root{
+  --teal:#6BBCCA;
+  --teal-lt:#B8DEE6;
+  --teal-dk:#2E8EA0;
+  --teal-deep:#1D5F6E;
+  --yellow:#F7C435;
+  --yellow-lt:#FEF0B0;
+  --orange:#E8451A;
+  --orange-lt:#FDDDD4;
+  --cream:#F8F3E8;
+  --cream-dk:#EDE6D4;
+  --ink:#1A1714;
+  --white:#FFFDF7;
+  --D:'Barlow Condensed',sans-serif;
+  --B:'Barlow',sans-serif;
+}
+
+body{font-family:var(--B);background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ── STICKER SYSTEM ── */
+.sticker{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--D);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;cursor:default;
+  flex-shrink:0;
+}
+.st-y{background:var(--yellow);color:var(--ink)}
+.st-w{background:rgba(255,255,255,.95);color:var(--ink)}
+.st-o{background:var(--orange);color:var(--white)}
+.st-t{background:var(--teal);color:var(--white)}
+.st-tl{background:var(--teal-lt);color:var(--teal-deep)}
+.st-cr{background:var(--cream);color:var(--ink)}
+.st-k{background:var(--ink);color:var(--white)}
+.st-wk{background:rgba(255,255,255,.15);color:var(--white)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:12px;left:16px;right:16px;z-index:300;
+  height:52px;
+  background:rgba(248,243,232,.97);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:100px;
+  border:1px solid rgba(26,23,20,.1);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 8px 0 22px;
+  box-shadow:0 4px 20px rgba(26,23,20,.1);
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  will-change:transform;
+}
+.nav-logo{
+  font-family:var(--D);font-size:17px;font-weight:900;font-style:italic;
+  color:var(--ink);text-decoration:none;letter-spacing:-.02em;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-bead{
+  width:9px;height:9px;border-radius:50%;background:var(--teal);
+  animation:nb 2.5s ease-in-out infinite;
+}
+@keyframes nb{0%,100%{background:var(--teal)}50%{background:var(--orange);transform:scale(1.5)}}
+.nav-links{
+  display:flex;gap:2px;
+  font-family:var(--D);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.nav-links a{
+  color:var(--ink);text-decoration:none;
+  padding:7px 14px;border-radius:100px;transition:.15s;
+  opacity:.7;
+}
+.nav-links a:hover{background:rgba(26,23,20,.08);color:var(--ink);opacity:1}
+.nav-cta{
+  font-family:var(--D);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--teal);color:var(--white);
+  padding:10px 22px;border-radius:100px;text-decoration:none;
+  transition:background .15s,transform .12s;
+}
+.nav-cta:hover{background:var(--teal-dk);transform:scale(1.04)}
+
+/* responsive nav — drop the center links on small screens so the
+   logo and CTA never collide or wrap */
+@media (max-width:760px){
+  nav{padding:0 8px 0 16px}
+  .nav-logo{font-size:15px}
+  .nav-links{display:none}
+}
+
+/* ──────────────────────────────────────
+   SECTION 1 · HERO — TEAL WORLD
+   (drink-stage hero + falling toppings rain,
+   wave divider now lives at the top of the
+   pouring section below)
+────────────────────────────────────── */
+.s-hero{
+  position:relative;background:var(--teal);overflow:hidden;z-index:1;
+  padding:120px 40px 0;min-height:1100px;margin-bottom:0;
+  isolation:isolate;
+}
+.s-hero-bg-type{
+  position:absolute;left:0;bottom:14%;z-index:1;
+  font-family:var(--D);font-size:340px;font-weight:900;font-style:italic;
+  color:rgba(255,255,255,.10);line-height:.8;letter-spacing:-.02em;
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+.hero-layout{
+  position:relative;z-index:20;max-width:1480px;margin:0 auto;
+}
+
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.hero-badges .sticker{
+  background:var(--white);border-radius:40px;padding:9px 18px;
+  font-family:var(--D);font-size:12px;font-weight:900;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:7px;
+  border:none;
+}
+.hero-badges .sticker.st-wk{background:rgba(255,255,255,.22);color:var(--white)}
+
+.hero-h1{
+  font-family:var(--D);font-weight:900;font-style:italic;line-height:.80;
+  letter-spacing:-.01em;text-transform:uppercase;margin-bottom:0;
+  font-size:160px;
+}
+.hero-h1 .sk{display:block;color:transparent;-webkit-text-stroke:3px var(--white)}
+.hero-h1 .y{display:block;color:var(--yellow)}
+.hero-h1 .o{display:block;color:var(--orange)}
+
+.hero-sub{
+  max-width:480px;font-size:19px;line-height:1.5;color:rgba(255,253,247,.95);
+  margin-top:20px;margin-bottom:22px;font-weight:500;
+  text-shadow:0 1px 14px rgba(29,95,110,.55);position:relative;z-index:20;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:160px;max-width:430px;position:relative;z-index:20}
+
+.btn{
+  font-family:var(--D);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:100px;transition:.15s;cursor:pointer;
+}
+.btn:hover{transform:scale(1.04);filter:brightness(1.05)}
+.btn-w{background:var(--white);color:var(--ink)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-o{background:var(--orange);color:var(--white)}
+.btn-k{background:var(--ink);color:var(--white)}
+.btn-t{background:var(--teal);color:var(--white)}
+.btn-tl{background:var(--teal-lt);color:var(--teal-deep)}
+.btn-ghost{
+  background:rgba(255,255,255,.16);color:var(--white);border:2px solid rgba(255,255,255,.5);
+  backdrop-filter:blur(6px);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.24)}
+
+/* decorative floating toppings (static, small accent pieces near the headline) */
+.hero-topping{position:absolute;z-index:5;pointer-events:none;font-size:0}
+.hero-topping svg{display:block}
+
+/* ══════════════════════════════════════
+   FALLING TOPPINGS — full-height rain,
+   now layered behind the drink cups at the
+   base of the hero (z-index below .drink-stage)
+   so the cups occlude pieces as they pass.
+══════════════════════════════════════ */
+.topping-rain{
+  position:absolute;
+  top:-10%;bottom:0;left:50%;right:0;
+  z-index:5;             /* BEHIND .drink-stage (z-index:6) */
+  pointer-events:none;
+  overflow:hidden;
+}
+.topping{
+  position:absolute;
+  top:-160px;             /* start above the stage */
+  width:64px;
+  will-change:transform;
+  animation:fall linear infinite;
+  filter:drop-shadow(0 10px 14px rgba(20,40,40,.28));
+}
+.topping img{width:100%;height:auto;display:block}
+
+/* Each piece: horizontal position, size, fall speed/delay, and a
+   unique swing amplitude so the whole rain feels hand-tuned rather
+   than mechanically identical. */
+.t1 {left:2%;  width:74px; animation-duration:9s;  animation-delay:-1s;  --swing:18px;  --spin:14deg}
+.t2 {left:14%; width:96px; animation-duration:12s; animation-delay:-6s;  --swing:-24px; --spin:-10deg}
+.t3 {left:26%; width:58px; animation-duration:8s;  animation-delay:-3s;  --swing:14px;  --spin:20deg}
+.t4 {left:38%; width:108px;animation-duration:14s; animation-delay:-9s;  --swing:-20px; --spin:-16deg}
+.t5 {left:50%; width:70px; animation-duration:10s; animation-delay:-4.5s;--swing:22px;  --spin:12deg}
+.t6 {left:60%; width:90px; animation-duration:13s; animation-delay:-11s; --swing:-16px; --spin:-22deg}
+.t7 {left:70%; width:64px; animation-duration:9.5s;animation-delay:-2s;  --swing:20px;  --spin:18deg}
+.t8 {left:80%; width:100px;animation-duration:15s; animation-delay:-7s;  --swing:-26px; --spin:-12deg}
+.t9 {left:90%; width:72px; animation-duration:11s; animation-delay:-5s;  --swing:16px;  --spin:16deg}
+.t10{left:8%;  width:54px; animation-duration:10.5s;animation-delay:-13s;--swing:-14px; --spin:-18deg}
+.t11{left:46%; width:62px; animation-duration:9s;  animation-delay:-8.5s;--swing:18px;  --spin:10deg}
+.t12{left:94%; width:80px; animation-duration:12.5s;animation-delay:-3.5s;--swing:-18px;--spin:-14deg}
+.t13{left:20%; width:88px; animation-duration:14.5s;animation-delay:-10s;--swing:22px;  --spin:8deg}
+.t14{left:64%; width:56px; animation-duration:8.5s; animation-delay:-6.5s;--swing:-20px; --spin:-20deg}
+.t15{left:34%; width:78px; animation-duration:11.5s;animation-delay:-1.5s;--swing:16px; --spin:14deg}
+
+@keyframes fall{
+  0%{
+    transform:translateY(0) translateX(0) rotate(0deg);
+    opacity:0;
+  }
+  8%{opacity:1}
+  50%{
+    transform:translateY(calc(50% + 280px)) translateX(var(--swing)) rotate(calc(var(--spin) * 1));
+  }
+  92%{opacity:1}
+  100%{
+    transform:translateY(calc(100% + 560px)) translateX(0) rotate(calc(var(--spin) * 2));
+    opacity:0;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .topping,.drink{animation:none !important;opacity:1 !important;transform:none !important}
+}
+
+/* ===== DRINK STAGE — holds the drink cups at the hero bottom.
+   No wave lives here anymore; the wave now lives in the pouring
+   section below and overflows upward to cover the cups. ===== */
+.drink-stage{
+  position:absolute;left:0;right:0;bottom:0;z-index:6;
+  height:480px;pointer-events:none;
+}
+.drink{
+  position:absolute;bottom:100px;height:auto;
+  filter:drop-shadow(0 18px 30px rgba(29,95,110,.30));
+  opacity:0;z-index:2;
+}
+.drink.candy{width:520px;left:53%;transform:translateY(70px)}
+.drink.smores{width:600px;left:65%;transform:translateY(80px)}
+
+/* hero load-in animation */
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.go .drink{animation:rise .9s cubic-bezier(.2,.85,.3,1) forwards}
+.go .drink.candy{animation-delay:.35s}
+.go .drink.smores{animation-delay:.5s}
+
+/* stats bar — below everything in normal flow */
+
+.hero-bottom-pad{height:32px}
+
+/* ===== 3D WAVE — lives at the TOP of the pouring section below,
+   pulled up so it overflows into the hero and covers the cups. ===== */
+.cream-crest{
+  position:absolute;left:0;right:0;
+  top:auto;bottom:calc(100% - 20px);
+  width:100%;height:auto;min-height:400px;
+  object-fit:cover;object-position:bottom right;
+  z-index:2;display:block;pointer-events:none;
+}
+
+@media (min-width:1920px){
+  .cream-crest{
+    left:auto;
+    min-height:0;
+    max-height:500px;
+    height:25vw;
+  }
+  .s-menu{
+    padding-top:80px;
+    margin-top:80px;
+  }
+  .s-hero-bg-type{
+    left:10%;
+  }
+}
+
+@media (max-width:1100px){
+  .hero-h1{font-size:84px}
+  .s-hero-bg-type{font-size:220px;bottom:200px}
+  .s-hero{min-height:720px;padding:110px 20px 0}
+  .drink-stage{height:420px}
+  .drink.candy{width:280px;left:42%}
+  .drink.smores{width:295px;left:62%}
+}
+
+/* ──────────────────────────────────────
+   SECTION 2 · CATEGORY MENU — CREAM
+────────────────────────────────────── */
+.s-menu{
+  background:#FEFBF5;
+  padding:120px 40px 60px;
+  position:relative;overflow:visible;z-index:2;
+}
+.s-menu-bg{
+  position:absolute;right:-40px;top:20px;
+  font-family:var(--D);font-size:260px;font-weight:900;font-style:italic;
+  color:rgba(26,23,20,.04);
+  pointer-events:none;user-select:none;
+  line-height:1;
+}
+
+.menu-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:32px;position:relative;z-index:1;
+}
+.sec-label{
+  font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(26,23,20,.4);display:flex;align-items:center;gap:8px;margin-bottom:8px;
+}
+.sec-label-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.sec-h2{
+  font-family:var(--D);
+  font-size:clamp(44px,6vw,80px);
+  font-weight:900;font-style:italic;
+  line-height:.88;letter-spacing:-.025em;color:var(--ink);
+}
+
+/* drive-thru style menu board */
+.menu-board{
+  background:var(--ink);
+  border-radius:28px;
+  padding:36px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  position:relative;z-index:1;
+}
+
+/* subtle texture lines on board */
+.menu-board::before{
+  content:'';
+  position:absolute;inset:0;
+  border-radius:28px;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,.02) 40px,
+    rgba(255,255,255,.02) 41px
+  );
+  pointer-events:none;
+}
+
+.menu-item{
+  background:rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:20px 16px;
+  text-align:center;
+  cursor:pointer;
+  transition:background .2s,transform .15s;
+  border:1px solid rgba(255,255,255,.07);
+  position:relative;z-index:1;
+}
+.menu-item:hover{background:rgba(107,188,202,.2);transform:translateY(-3px)}
+
+.mi-icon{font-size:28px;display:block;margin-bottom:10px}
+.mi-name{
+  font-family:var(--D);font-size:16px;font-weight:900;font-style:italic;
+  color:var(--white);line-height:1;margin-bottom:6px;
+}
+.mi-tag{
+  font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+.mit-t{color:var(--teal-lt)}
+.mit-y{color:var(--yellow)}
+.mit-o{color:var(--orange-lt)}
+
+.menu-item.featured{background:var(--teal);border-color:var(--teal)}
+.menu-item.featured:hover{background:var(--teal-dk)}
+.menu-item.featured .mi-name{color:var(--white)}
+
+/* ──────────────────────────────────────
+   SECTION 3 · DRINKS SHOWCASE — YELLOW
+────────────────────────────────────── */
+.s-drinks{
+  background:var(--yellow);
+  padding:60px 40px;
+  position:relative;overflow:hidden;
+}
+
+.s-drinks-bg{
+  position:absolute;left:-20px;bottom:-60px;
+  font-family:var(--D);font-size:320px;font-weight:900;font-style:italic;
+  line-height:.85;color:rgba(26,23,20,.06);
+  pointer-events:none;user-select:none;
+}
+
+.drinks-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:32px;position:relative;z-index:1;
+}
+
+/* asymmetric drinks grid */
+.drinks-showcase{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+  position:relative;z-index:1;
+}
+
+.dc{
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  background:var(--ink);
+}
+.dc.hero-drink{grid-row:span 2}
+.dc img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+}
+.dc:hover img{transform:scale(1.06)}
+.dc.hero-drink img{min-height:480px}
+.dc:not(.hero-drink) img{min-height:220px}
+
+.dc-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to top,rgba(26,23,20,.85) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:18px;
+}
+.dc-name{
+  font-family:var(--D);font-size:20px;font-weight:900;font-style:italic;
+  color:var(--white);line-height:.95;margin-bottom:8px;
+}
+.dc.hero-drink .dc-name{font-size:32px}
+.dc-chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font-family:var(--D);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:100px;
+}
+.ch-t{background:var(--teal-lt);color:var(--teal-deep)}
+.ch-y{background:var(--yellow);color:var(--ink)}
+.ch-o{background:var(--orange);color:var(--white)}
+.ch-w{background:rgba(255,255,255,.9);color:var(--ink)}
+
+.dc-corner{
+  position:absolute;top:12px;right:12px;z-index:3;
+  padding:5px 12px;border-radius:100px;
+  font-family:var(--D);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+}
+
+/* circle shape cutout variant */
+.dc-circle{
+  border-radius:50% !important;
+  aspect-ratio:1;
+  width:100%;
+}
+
+/* wave into next */
+.wave-up{
+  height:50px;
+  background:var(--ink);
+  clip-path:ellipse(55% 100% at 50% 0%);
+  margin-bottom:-2px;
+}
+
+/* ──────────────────────────────────────
+   SECTION 4 · WHY GROUNDS — INK WORLD
+────────────────────────────────────── */
+.s-why{
+  background:var(--ink);
+  padding:60px 40px;
+  position:relative;overflow:hidden;
+}
+.s-why-bg{
+  position:absolute;right:-30px;top:0;
+  font-family:var(--D);font-size:300px;font-weight:900;font-style:italic;
+  color:rgba(255,255,255,.03);
+  pointer-events:none;user-select:none;line-height:1;
+}
+
+.why-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  position:relative;z-index:1;
+}
+
+/* each "why" card is its own mini poster */
+.why-card{
+  border-radius:24px;
+  padding:36px 30px;
+  position:relative;overflow:hidden;
+}
+.wc-teal{background:var(--teal)}
+.wc-cream{background:var(--cream)}
+.wc-orange{background:var(--orange)}
+
+.why-num{
+  font-family:var(--D);font-size:120px;font-weight:900;font-style:italic;
+  position:absolute;bottom:-20px;right:-8px;
+  line-height:1;pointer-events:none;
+  color:rgba(255,255,255,.08);
+}
+.wc-cream .why-num{color:rgba(26,23,20,.05)}
+
+.why-icon{font-size:36px;display:block;margin-bottom:18px}
+.why-title{
+  font-family:var(--D);font-size:28px;font-weight:900;font-style:italic;
+  line-height:.95;margin-bottom:12px;
+}
+.wc-teal .why-title,.wc-orange .why-title{color:var(--white)}
+.wc-cream .why-title{color:var(--ink)}
+.why-body{font-size:14px;font-weight:400;line-height:1.65;max-width:240px}
+.wc-teal .why-body,.wc-orange .why-body{color:rgba(255,255,255,.65)}
+.wc-cream .why-body{color:rgba(26,23,20,.55)}
+
+/* ──────────────────────────────────────
+   SECTION 5 · GALLERY — ORANGE
+────────────────────────────────────── */
+.s-gallery{
+  background:var(--orange);
+  padding:60px 40px;
+  position:relative;overflow:hidden;
+}
+.s-gallery-bg{
+  position:absolute;left:-10px;bottom:-60px;
+  font-family:var(--D);font-size:300px;font-weight:900;font-style:italic;
+  color:rgba(255,255,255,.06);
+  pointer-events:none;user-select:none;line-height:.85;
+}
+
+.gallery-header{
+  margin-bottom:32px;position:relative;z-index:1;
+}
+
+/* irregular mosaic grid */
+.gallery-mosaic{
+  display:grid;
+  grid-template-columns:3fr 2fr 2fr;
+  grid-template-rows:300px 240px;
+  gap:12px;
+  position:relative;z-index:1;
+}
+
+.gm-cell{
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  background:var(--teal-dk);
+  cursor:pointer;
+}
+.gm-cell.tall{grid-row:span 2}
+.gm-cell img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease;
+  filter:saturate(1.1);
+}
+.gm-cell:hover img{transform:scale(1.05)}
+
+/* frosted label */
+.gm-label{
+  position:absolute;bottom:14px;left:14px;right:14px;
+  background:rgba(26,23,20,.55);
+  backdrop-filter:blur(12px);
+  border-radius:12px;padding:10px 14px;
+}
+.gm-label-top{
+  font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-bottom:3px;
+}
+.gm-label-name{
+  font-family:var(--D);font-size:16px;font-weight:900;font-style:italic;
+  color:var(--white);line-height:1;
+}
+
+/* CIRCLE CUTOUT cell */
+.gm-circle{
+  border-radius:50%;
+  aspect-ratio:1;
+  width:100%;max-width:240px;
+  margin:auto;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--yellow);
+  overflow:hidden;
+}
+
+/* ──────────────────────────────────────
+   SECTION 6 · ABOUT — TEAL + YELLOW
+────────────────────────────────────── */
+.s-about{
+  background:var(--teal);
+  padding:60px 40px;
+  position:relative;overflow:hidden;
+}
+.s-about-bg{
+  position:absolute;right:-30px;top:-20px;
+  font-family:var(--D);font-size:280px;font-weight:900;font-style:italic;
+  color:rgba(255,255,255,.06);
+  pointer-events:none;user-select:none;line-height:1;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  align-items:center;
+  position:relative;z-index:1;
+}
+
+/* blob photo on left */
+.about-photo-blob{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.blob-bg{
+  width:100%;max-width:460px;
+  aspect-ratio:1;
+  border-radius:60% 40% 55% 45% / 45% 55% 45% 55%;
+  background:var(--yellow);
+  overflow:hidden;
+  position:relative;
+}
+.blob-bg img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 5s ease;
+}
+.blob-bg:hover img{transform:scale(1.05)}
+
+/* sticker dot decoration */
+.blob-sticker{
+  position:absolute;bottom:-16px;right:-10px;
+  background:var(--orange);border-radius:20px;
+  padding:14px 18px;
+  transform:rotate(-5deg);
+  box-shadow:0 6px 20px rgba(26,23,20,.25);
+}
+.bs-big{font-family:var(--D);font-size:30px;font-weight:900;font-style:italic;color:var(--white);line-height:1}
+.bs-sm{font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+.about-text{padding:20px 0 20px 24px}
+
+.about-pull{
+  font-family:var(--D);
+  font-size:clamp(36px,4.5vw,56px);
+  font-weight:900;font-style:italic;
+  line-height:.95;color:var(--white);
+  margin-bottom:20px;
+}
+.about-pull em{color:var(--yellow)}
+.about-body{
+  font-size:15px;font-weight:400;line-height:1.7;
+  color:rgba(255,255,255,.72);max-width:420px;margin-bottom:24px;
+}
+.about-checklist{
+  list-style:none;display:flex;flex-direction:column;gap:10px;
+  margin-bottom:32px;
+}
+.about-checklist li{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;font-weight:500;color:var(--white);
+}
+.about-checklist li::before{
+  content:'';
+  width:8px;height:8px;border-radius:50%;
+  background:var(--yellow);flex-shrink:0;
+}
+
+/* ──────────────────────────────────────
+   SECTION 7 · LOCATIONS — CREAM WORLD
+────────────────────────────────────── */
+.s-locations{
+  background:var(--cream);
+  padding:80px 40px;
+  position:relative;overflow:hidden;
+}
+.s-locations-bg{
+  position:absolute;left:auto;right:40px;top:0;bottom:0;
+  font-family:var(--D);font-size:280px;font-weight:900;font-style:italic;
+  color:rgba(26,23,20,.04);
+  pointer-events:none;user-select:none;line-height:.9;
+}
+
+.loc-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:32px;position:relative;z-index:1;
+}
+
+/* each location as a mini poster card */
+.loc-cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  position:relative;z-index:1;
+}
+
+.loc-card-item{
+  background:var(--white);
+  border-radius:24px;
+  padding:32px 24px;
+  position:relative;overflow:hidden;
+  transition:transform .2s;
+  cursor:default;
+}
+.loc-card-item:hover{transform:translateY(-4px)}
+
+/* coloured top accent unique per card */
+.lc1{border-top:6px solid var(--teal)}
+.lc2{border-top:6px solid var(--yellow)}
+.lc3{border-top:6px solid var(--orange)}
+.lc4{border-top:6px solid var(--teal-dk)}
+
+.loc-card-num{
+  font-family:var(--D);font-size:80px;font-weight:900;font-style:italic;
+  color:rgba(26,23,20,.05);line-height:1;
+  position:absolute;top:8px;right:12px;
+}
+.loc-card-name{
+  font-family:var(--D);font-size:28px;font-weight:900;font-style:italic;
+  color:var(--ink);line-height:1;margin-bottom:8px;
+}
+.loc-card-addr{
+  font-size:13px;font-weight:400;color:rgba(26,23,20,.5);
+  line-height:1.55;margin-bottom:14px;
+}
+.loc-open-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--teal-lt);color:var(--teal-deep);
+  padding:5px 12px;border-radius:100px;
+}
+.loc-open-pill::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--teal-dk);
+  animation:blink 2s ease-in-out infinite;flex-shrink:0;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* ──────────────────────────────────────
+   SECTION 8 · CTA — ORANGE WORLD
+────────────────────────────────────── */
+.s-cta{
+  background:var(--orange);
+  padding:60px 40px 0;
+  position:relative;overflow:hidden;
+}
+.s-cta-bg{
+  position:absolute;right:-40px;top:-20px;
+  font-family:var(--D);font-size:320px;font-weight:900;font-style:italic;
+  color:rgba(255,255,255,.07);
+  pointer-events:none;user-select:none;line-height:.85;
+}
+
+.cta-layout{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:center;
+  position:relative;z-index:1;
+}
+.cta-h{
+  font-family:var(--D);
+  font-size:clamp(52px,7vw,96px);
+  font-weight:900;font-style:italic;
+  line-height:.85;color:var(--white);
+}
+.cta-h em{color:var(--yellow)}
+.cta-sub{
+  font-size:15px;font-weight:400;color:rgba(255,255,255,.7);
+  margin-top:16px;max-width:480px;
+}
+.cta-right{
+  display:flex;flex-direction:column;gap:12px;
+  flex-shrink:0;
+}
+
+/* Hours mini card inside CTA */
+.hours-card{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:20px 24px;
+  min-width:240px;
+}
+.hc-label{
+  font-family:var(--D);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:12px;
+}
+.hc-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.hc-row:last-child{border-bottom:none}
+.hc-day{font-size:13px;font-weight:500;color:var(--white)}
+.hc-time{
+  font-family:var(--D);font-size:13px;font-weight:700;font-style:italic;
+  background:rgba(255,255,255,.12);color:var(--white);
+  padding:3px 10px;border-radius:100px;
+}
+
+/* ── MARQUEE (reused mid-page) ── */
+.marquee-bar{
+  background:var(--ink);height:44px;
+  overflow:hidden;display:flex;align-items:center;
+  border-radius:16px;
+}
+.mq-track{
+  display:flex;white-space:nowrap;
+  animation:mq 22s linear infinite;
+  height:100%;align-items:center;
+}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{
+  font-family:var(--D);font-size:14px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--white);padding:0 1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.md{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;
+  background:var(--ink);
+  padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  border-radius:28px 28px 0 0;
+  margin:48px 0 0;
+}
+.foot-left .fl-logo{
+  font-family:var(--D);font-size:16px;font-weight:900;font-style:italic;
+  color:var(--white);letter-spacing:-.02em;
+}
+.foot-left .fl-tag{
+  font-family:var(--D);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-top:4px;
+}
+.foot-links{display:flex;gap:2px}
+.foot-links a{
+  font-size:12px;font-weight:500;color:rgba(255,255,255,.4);
+  text-decoration:none;padding:7px 13px;border-radius:100px;transition:.15s;
+}
+.foot-links a:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}
+.d3{transition-delay:.21s}.d4{transition-delay:.28s}
