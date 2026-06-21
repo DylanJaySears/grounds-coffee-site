@@ -273,9 +273,21 @@ nav{
   .hero-h1{font-size:84px}
   .s-hero-bg-type{font-size:220px;bottom:200px}
   .s-hero{min-height:720px;padding:110px 20px 0}
-  .drink-stage{height:420px}
-  .drink.candy{width:280px;left:42%}
-  .drink.smores{width:295px;left:62%}
+
+  /* flex drink stage — both drinks centered side-by-side, no % positioning */
+  .drink-stage{
+    position:relative;bottom:auto;left:auto;right:auto;
+    height:auto;
+    display:flex;justify-content:center;align-items:flex-end;gap:32px;
+    margin-top:48px;
+  }
+  .drink{position:relative;bottom:auto;left:auto}
+  .drink.candy{width:240px;transform:translateY(70px) rotate(15deg)}
+  .drink.smores{width:270px;transform:translateY(80px) rotate(-15deg)}
+  @keyframes rise-candy-rt{to{opacity:1;transform:translateY(0) rotate(15deg)}}
+  @keyframes rise-smores-rt{to{opacity:1;transform:translateY(0) rotate(-15deg)}}
+  .go .drink.candy{animation-name:rise-candy-rt}
+  .go .drink.smores{animation-name:rise-smores-rt}
 }
 
 /* ──────────────────────────────────────
@@ -844,39 +856,29 @@ footer{
   /* ── HERO ── */
   .s-hero{
     padding:100px 20px 0;
-    min-height:100vh;
-    margin-bottom:60px;
+    min-height:900px;
+    margin-bottom:80px;
   }
   .s-hero-bg-type{
-    font-size:130px;
+    font-size:200px;
+    transform:rotate(90deg);
+    top:10%;
+    left:80%;
     bottom:auto;
-    top:100px;
-    left:-10px;
   }
-  .hero-h1{font-size:72px}
+  .hero-h1{font-size:90px}
   .hero-sub{font-size:16px;margin-bottom:20px}
   .hero-btns{
-    margin-bottom:280px; /* room for the drink cups below */
+    margin-bottom:32px;
     flex-direction:column;
     max-width:100%;
   }
   .hero-btns .btn{width:100%;justify-content:center}
   .hero-badges{gap:8px}
 
-  /* drink cups */
-  .drink-stage{height:320px}
-  .drink.candy{
-    width:250px;
-    left:-25px;
-    bottom:-10%;
-    transform:rotate(15deg);
-  }
-  .drink.smores{
-    width:320px;
-    left:40%;
-    bottom:-30%;
-    transform:rotate(-15deg);
-  }
+  /* drinks inherit flex layout from ≤1100px block, just override sizes */
+  .drink.candy{width:160px}
+  .drink.smores{width:185px}
 
   /* toppings rain — full width, drop from top */
   .topping-rain{left:0;width:100%;top:-30%}
