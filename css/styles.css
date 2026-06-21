@@ -861,24 +861,48 @@ footer{
   }
   .s-hero-bg-type{
     font-size:200px;
-    transform:rotate(90deg);
-    top:10%;
-    left:80%;
+    left:auto;
+    right:0;
+    top:0;
     bottom:auto;
+    transform:rotate(90deg);
+    transform-origin:top right;
   }
   .hero-h1{font-size:90px}
   .hero-sub{font-size:16px;margin-bottom:20px}
   .hero-btns{
-    margin-bottom:32px;
+    margin-bottom:200px;
     flex-direction:column;
     max-width:100%;
   }
   .hero-btns .btn{width:100%;justify-content:center}
   .hero-badges{gap:8px}
 
-  /* drinks inherit flex layout from ≤1100px block, just override sizes */
-  .drink.candy{width:160px}
-  .drink.smores{width:185px}
+  /* drinks — back to absolute, pop from edges behind cream wave */
+  .drink-stage{
+    position:absolute;left:0;right:0;bottom:0;
+    height:420px;
+    display:block;
+    margin-top:0;
+  }
+  .drink{position:absolute;bottom:0}
+  .drink.candy{
+    width:220px;
+    left:-20px;
+    bottom:0;
+    transform:translateY(60px) rotate(15deg);
+  }
+  .drink.smores{
+    width:260px;
+    right:-20px;
+    left:auto;
+    bottom:0;
+    transform:translateY(80px) rotate(-15deg);
+  }
+  @keyframes rise-candy-m{to{opacity:1;transform:translateY(0) rotate(15deg)}}
+  @keyframes rise-smores-m{to{opacity:1;transform:translateY(0) rotate(-15deg)}}
+  .go .drink.candy{animation-name:rise-candy-m}
+  .go .drink.smores{animation-name:rise-smores-m}
 
   /* toppings rain — full width, drop from top */
   .topping-rain{left:0;width:100%;top:-30%}
