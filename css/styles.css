@@ -835,3 +835,179 @@ footer{
 .rv.vis{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.07s}.d2{transition-delay:.14s}
 .d3{transition-delay:.21s}.d4{transition-delay:.28s}
+
+/* ══════════════════════════════════════
+   MOBILE — ≤ 767px
+══════════════════════════════════════ */
+@media (max-width:767px){
+
+  /* ── HERO ── */
+  .s-hero{
+    padding:100px 20px 0;
+    min-height:100vh;
+    margin-bottom:60px;
+  }
+  .s-hero-bg-type{
+    font-size:130px;
+    bottom:auto;
+    top:100px;
+    left:-10px;
+  }
+  .hero-h1{font-size:72px}
+  .hero-sub{font-size:16px;margin-bottom:20px}
+  .hero-btns{
+    margin-bottom:280px; /* room for the drink cups below */
+    flex-direction:column;
+    max-width:100%;
+  }
+  .hero-btns .btn{width:100%;justify-content:center}
+  .hero-badges{gap:8px}
+
+  /* drink cups */
+  .drink-stage{height:320px}
+  .drink.candy{
+    width:250px;
+    left:-25px;
+    bottom:-10%;
+    transform:rotate(15deg);
+  }
+  .drink.smores{
+    width:320px;
+    left:40%;
+    bottom:-30%;
+    transform:rotate(-15deg);
+  }
+
+  /* toppings rain — full width, drop from top */
+  .topping-rain{left:0;width:100%;top:-30%}
+
+  /* cream wave */
+  .cream-crest{min-height:200px}
+
+  /* ── MENU ── */
+  .s-menu{padding:40px 20px 48px}
+  .menu-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .menu-board{
+    grid-template-columns:repeat(2,1fr);
+    padding:20px;
+    gap:8px;
+  }
+
+  /* ── DRINKS ── */
+  .s-drinks{padding:48px 20px}
+  .drinks-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .drinks-showcase{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+  }
+  .dc.hero-drink{grid-row:span 1}
+  .dc.hero-drink img{min-height:280px}
+  .dc:not(.hero-drink) img{min-height:200px}
+
+  /* ── WHY ── */
+  .s-why{padding:48px 20px}
+  .why-layout{grid-template-columns:1fr}
+
+  /* ── GALLERY ── */
+  .s-gallery{padding:48px 20px}
+  .gallery-mosaic{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+  .gm-cell.tall{
+    grid-row:span 1;
+    grid-column:span 2;
+  }
+
+  /* ── ABOUT ── */
+  .s-about{padding:48px 20px}
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .about-text{padding:0}
+  .blob-bg{max-width:320px;margin:0 auto}
+
+  /* ── LOCATIONS ── */
+  .s-locations{padding:48px 20px}
+  .loc-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .loc-cards{grid-template-columns:1fr 1fr}
+
+  /* ── CTA ── */
+  .s-cta{padding:48px 20px 0}
+  .cta-layout{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .cta-right{flex-direction:column}
+  .hours-card{min-width:0}
+  .s-cta .btn{width:100%;justify-content:center}
+
+  /* ── FOOTER ── */
+  footer{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    padding:24px 20px;
+  }
+  .foot-links{flex-wrap:wrap}
+
+  /* ── SECTIONS — side padding ── */
+  .s-menu-bg,.s-drinks-bg,.s-why-bg,.s-gallery-bg,.s-about-bg,.s-locations-bg,.s-cta-bg{
+    display:none; /* decorative bg text clips badly on mobile */
+  }
+}
+
+/* ── TABLET 768–1099px ── */
+@media (min-width:768px) and (max-width:1099px){
+  .s-hero{padding:110px 28px 0;min-height:820px}
+  .hero-h1{font-size:100px}
+  .hero-btns{margin-bottom:200px}
+  .drink.candy{width:320px;left:46%}
+  .drink.smores{width:340px;left:64%}
+  .drink-stage{height:440px}
+
+  .s-menu{padding:140px 28px 48px}
+  .menu-board{grid-template-columns:repeat(3,1fr);padding:24px;gap:10px}
+  .menu-header{flex-direction:column;align-items:flex-start;gap:16px}
+
+  .s-drinks{padding:48px 28px}
+  .drinks-header{flex-direction:column;align-items:flex-start;gap:16px}
+
+  .s-why{padding:48px 28px}
+  .why-layout{grid-template-columns:1fr 1fr;gap:10px}
+
+  .s-gallery{padding:48px 28px}
+  .gallery-mosaic{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+  .gm-cell.tall{
+    grid-row:span 1;
+    grid-column:span 2;
+  }
+
+  .s-about{padding:48px 28px}
+  .about-grid{grid-template-columns:1fr 1fr;gap:24px}
+
+  .s-locations{padding:48px 28px}
+  .loc-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .loc-cards{grid-template-columns:1fr 1fr;gap:10px}
+
+  .s-cta{padding:48px 28px 0}
+  .cta-layout{gap:24px}
+
+  footer{padding:28px}
+}
